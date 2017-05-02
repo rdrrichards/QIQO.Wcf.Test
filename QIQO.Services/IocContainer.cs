@@ -1,6 +1,5 @@
 ﻿using SimpleInjector;
 using SimpleInjector.Integration.Wcf;
-using System;
 
 namespace QIQO.Services
 {
@@ -22,6 +21,8 @@ namespace QIQO.Services
             _container.Register<IService1, Service1>();
 
             Container = _container;
+            // Register the container to the SimpleInjectorServiceHostFactory.
+            SimpleInjectorServiceHostFactory.SetContainer(_container);
             _container.Verify();
             return _container;
         }
